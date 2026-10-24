@@ -1,0 +1,19 @@
+version: "3.9"
+   services:
+     backend:
+       build:
+         context: ./todo-backend/todo-backend
+       ports:
+         - "8080:8080"
+       environment:
+         - CORS_ALLOWED_ORIGIN=http://<VM-IP>:5173
+
+     frontend:
+       build:
+         context: ./todo-frontend
+         args:
+           VITE_API_URL: http://<VM-IP>:8080
+       ports:
+         - "5173:80"
+       depends_on:
+         - backend
