@@ -13,7 +13,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/todos")
+    fetch("${import.meta.env.VITE_API_URL}/api/todos")
     .then(response => response.json())
     .then(data=>{
       setTodos(data);
@@ -47,7 +47,7 @@ function App() {
       description: todoText.trim(),
       completed: false
     };
-    fetch("http://localhost:8080/api/todos",{
+    fetch("${import.meta.env.VITE_API_URL}/api/todos",{
       method: "POST",
       headers:{
         "Content-Type": "application/json"
@@ -71,7 +71,7 @@ function App() {
       description:todo.description,
       completed: !todo.completed
     };
-    fetch(`http://localhost:8080/api/todos/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/todos/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -93,7 +93,7 @@ function App() {
     });
   };
   const deleteTodo = (id) => {
-    fetch(`http://localhost:8080/api/todos/${id}`,{
+    fetch(`${import.meta.env.VITE_API_URL}/api/todos/${id}`,{
       method:"DELETE"
     })
     .then(response=>{
@@ -108,7 +108,7 @@ function App() {
   };
   const clearCompleted =() => {
     const updatedTodos = todos.filter(todo => !todo.completed);
-    fetch(`http://localhost:8080/api/todos/completed`,{
+    fetch(`${import.meta.env.VITE_API_URL}/api/todos/completed`,{
       method:"DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -134,7 +134,7 @@ function App() {
     if(!confirmed){
       return;
     }
-    fetch(`http://localhost:8080/api/todos`,{
+    fetch(`${import.meta.env.VITE_API_URL}/api/todos`,{
       method:"DELETE"
     })
     .then(response=>{
