@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.todo.todo_backend.model.*;
 
-@CrossOrigin(origins = "http://localhost:5173",
+@CrossOrigin(origins = "${cors.allowed-origin:http://localhost:5173}",
     methods = {
         RequestMethod.GET,
         RequestMethod.POST,
