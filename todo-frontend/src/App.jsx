@@ -13,7 +13,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("${import.meta.env.VITE_API_URL}/api/todos")
+    fetch(`${import.meta.env.VITE_API_URL}/api/todos`)
     .then(response => response.json())
     .then(data=>{
       setTodos(data);
@@ -47,7 +47,7 @@ function App() {
       description: todoText.trim(),
       completed: false
     };
-    fetch("${import.meta.env.VITE_API_URL}/api/todos",{
+    fetch(`${import.meta.env.VITE_API_URL}/api/todos`,{
       method: "POST",
       headers:{
         "Content-Type": "application/json"
